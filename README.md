@@ -32,14 +32,19 @@ Contacto: 2 columnas. Izq: Horarios ("Mar a Dom, 9 a 20 hs"). Der: Formulario ma
 Footer: Bloque oscuro (bg-stone-900, text-stone-50). Dirección ficticia (Pichincha, Rosario), redes sociales (íconos SVG inline estrictamente).
 
 ## 4. Análisis Comparativo de Resultados
-Tras la ejecución, se observaron las siguientes diferencias en la resolución autónoma:
+La evaluación se realizó bajo los mismos parámetros, permitiendo identificar cómo los modelos interpretan y priorizan las restricciones del prompt:
 
-*   **Codex (GPT-4o):**
-    *   **Enfoque:** Resolución funcional priorizando la estructura semántica y la robustez del código.
-    *   **Estética:** Optó por un contraste estándar (fondo blanco), lo que resultó en una legibilidad técnica alta pero con una interpretación más conservadora de la paleta de colores propuesta.
-*   **Claude (3.5 Sonnet):**
-    *   **Enfoque:** Alta sensibilidad estética y capacidad de interpretación de directivas de diseño complejas.
-    *   **Estética:** Logró una mayor fidelidad a la identidad "estilo Luis Barragán" al implementar fondos tono arena y una jerarquía tipográfica que maximiza el impacto visual, demostrando un criterio de diseño avanzado.
+*   **Codex (GPT-4o) - Enfoque en Consistencia Técnica:**
+    *   **Adherencia a restricciones:** Alta. Siguió la estructura solicitada, priorizando la semántica y la robustez del código.
+    *   **Gestión de estilos:** Código conservador y estándar, ideal para mantenimiento, pero con una interpretación lineal de las instrucciones de diseño.
+    *   **Comportamiento Responsivo:** Implementó la adaptabilidad de forma estándar; el layout se ajusta correctamente, aunque con una jerarquía de elementos menos optimizada para pantallas móviles.
+
+*   **Claude (3.5 Sonnet) - Enfoque en Intención Estética y Diseño:**
+    *   **Adherencia a restricciones:** Alta, con una capacidad superior para interpretar conceptos abstractos.
+    *   **Criterio visual:** Aplicó la intención del espacio negativo y volúmenes, logrando un impacto visual superior y mayor fidelidad a la identidad "estilo Luis Barragán".
+    *   **Comportamiento Responsivo:** Presenta una resolución más fluida; Claude demuestra un mejor manejo de los *breakpoints* de Tailwind, asegurando que la identidad visual "arquitectónica" se preserve tanto en *desktop* como en dispositivos móviles sin perder la alineación de los bloques.
+
+**Conclusión técnica:** Mientras que Codex se consolida como una herramienta eficiente para la construcción de estructuras robustas y escalables, Claude destaca como un co-diseñador capaz de elevar el look and feel del producto. La elección entre ambos modelos no depende de su capacidad técnica —la cual es alta en ambos casos—, sino de la naturaleza del proyecto: Codex es ideal cuando la prioridad es la predictibilidad y la estandarización, mientras que Claude es la opción superior cuando el objetivo es lograr una identidad visual definida y una ejecución de diseño con mayor sensibilidad estética.
 
 ## 5. Evidencia Visual
 Las siguientes capturas documentan el estado final de las interfaces generadas sin intervención manual:
