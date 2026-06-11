@@ -7,7 +7,7 @@
 El presente proyecto consiste en la ejecución de un *prompt* único de alta precisión para el diseño autónomo de una *Landing Page* (“Grano & Raíz”), con el objetivo de comparar el rendimiento, la interpretación estética y la adherencia a restricciones técnicas entre dos modelos de lenguaje distintos: **Codex (GPT-4o)** y **Claude (3.5 Sonnet)**.
 
 ## 2. Acceso al Proyecto
-*   **Deploy Unificado (Vercel):** [Link]
+*   **Deploy Unificado (Vercel):** [https://pfo2-promptia.vercel.app/](https://pfo2-promptia.vercel.app/)
 
 ## 3. Especificaciones del Prompt
 Rol: Desarrollador Frontend Senior.
