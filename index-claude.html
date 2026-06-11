@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRANO & RAÍZ — Café de Especialidad · Rosario</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --sand:     #e7e0d5;
+      --terracota:#7c2d12;
+      --rosa:     #be185d;
+      --amarillo: #facc15;
+      --stone900: #1c1917;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background-color: var(--sand);
+      color: var(--stone900);
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    #site-header {
+      background-color: var(--terracota);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .logo-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      color: #fde8d8;
+      text-transform: uppercase;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .logo-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 200;
+      color: #fef7f0;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .nav-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fce7f3;
+      font-weight: 500;
+      transition: text-decoration 0.15s;
+      text-decoration: none;
+    }
+    .nav-link:hover { text-decoration: line-through; }
+
+    /* ── HERO ────────────────────────────────────── */
+    #hero {
+      background-color: var(--sand);
+      min-height: 88vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 0 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background geometric blocks — pure CSS, no images */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 42%;
+      height: 100%;
+      background-color: #d6cfc3;
+      z-index: 0;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 6rem; right: 8%;
+      width: 18%;
+      height: 38%;
+      background-color: var(--rosa);
+      z-index: 1;
+    }
+
+    .hero-accent-block {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 42%;
+      height: 22%;
+      background-color: var(--amarillo);
+      z-index: 1;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-h1 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      font-weight: 200;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      max-width: 16ch;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--terracota);
+    }
+
+    /* ── SECTION UTILITY ─────────────────────────── */
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #78716c;
+      font-weight: 500;
+    }
+
+    /* ── NOSOTROS ────────────────────────────────── */
+    .nosotros-quote-block {
+      background-color: var(--rosa);
+      color: #fce7f3;
+      padding: 3.5rem 3rem;
+    }
+
+    .nosotros-quote {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 200;
+      line-height: 1.2;
+      font-style: italic;
+      letter-spacing: -0.015em;
+    }
+
+    /* ── MENÚ ────────────────────────────────────── */
+    #menu { background-color: var(--sand); }
+
+    .menu-category {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--terracota);
+    }
+
+    .menu-item-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .menu-item-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.87rem;
+      color: #57534e;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .menu-divider {
+      border: none;
+      border-top: 1px solid #c7beb3;
+    }
+
+    /* ── TESTIMONIOS ─────────────────────────────── */
+    .testimonial-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.65;
+      font-style: italic;
+    }
+    .testimonial-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 1.5rem;
+    }
+
+    /* ── CONTACTO ────────────────────────────────── */
+    .form-input {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--stone900);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s;
+      color: var(--stone900);
+    }
+    .form-input::placeholder { color: #a8a29e; }
+    .form-input:focus { border-color: var(--rosa); }
+
+    .form-input-amarillo:focus { border-color: #d97706; }
+    .form-input-terracota:focus { border-color: var(--terracota); }
+
+    .form-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--rosa);
+      color: #fce7f3;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 1rem 2.5rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 6px 6px 0 var(--stone900);
+      transition: transform 0.1s, box-shadow 0.1s;
+      text-decoration: none;
+    }
+    .cta-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 4px 4px 0 var(--stone900);
+    }
+    .cta-btn:active {
+      transform: translate(6px, 6px);
+      box-shadow: 0 0 0 var(--stone900);
+    }
+
+    .cta-btn-terracota {
+      background-color: var(--terracota);
+      color: #fef3ec;
+      box-shadow: 6px 6px 0 var(--rosa);
+    }
+    .cta-btn-terracota:hover { box-shadow: 4px 4px 0 var(--rosa); }
+    .cta-btn-terracota:active { box-shadow: 0 0 0 var(--rosa); }
+
+    /* ── HORARIOS ────────────────────────────────── */
+    .schedule-day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #78716c;
+    }
+    .schedule-time {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      color: var(--stone900);
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    #site-footer { background-color: var(--stone900); color: #faf6f0; }
+
+    .footer-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 200;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── RESPONSIVE TWEAKS ───────────────────────── */
+    @media (max-width: 768px) {
+      #hero::before { width: 100%; opacity: 0.4; }
+      #hero::after  { display: none; }
+      .hero-accent-block { display: none; }
+      .hero-h1 { font-size: 2.4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     HEADER — Sticky Terracota
+════════════════════════════════════════════════ -->
+<header id="site-header">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
+
+    <!-- Logo tipográfico apilado -->
+    <a href="#" class="block leading-tight">
+      <span class="logo-eyebrow block">Café de Especialidad · Rosario</span>
+      <span class="logo-name block">GRANO & RAÍZ</span>
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#nosotros" class="nav-link">Nosotros</a>
+      <a href="#menu"     class="nav-link">Menú</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+      <a href="#contacto" class="nav-link" style="color:#facc15;">Reservar</a>
+    </nav>
+
+    <!-- Hamburger mobile -->
+    <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menú">
+      <span class="block w-6 h-0.5 bg-orange-100"></span>
+      <span class="block w-6 h-0.5 bg-orange-100"></span>
+      <span class="block w-4 h-0.5 bg-orange-100"></span>
+    </button>
+  </div>
+
+  <!-- Mobile nav drawer -->
+  <div id="mobile-nav" class="hidden md:hidden border-t border-orange-900">
+    <nav class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-4">
+      <a href="#nosotros" class="nav-link" onclick="document.getElementById('mobile-nav').classList.add('hidden')">Nosotros</a>
+      <a href="#menu"     class="nav-link" onclick="document.getElementById('mobile-nav').classList.add('hidden')">Menú</a>
+      <a href="#contacto" class="nav-link" onclick="document.getElementById('mobile-nav').classList.add('hidden')">Contacto</a>
+      <a href="#contacto" class="nav-link" style="color:#facc15;" onclick="document.getElementById('mobile-nav').classList.add('hidden')">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section id="hero">
+
+  <!-- Geometric accent bottom-right -->
+  <div class="hero-accent-block"></div>
+
+  <!-- SVG inline: grano abstracto, fondo decorativo -->
+  <svg class="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 pointer-events-none" width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="260" cy="260" rx="200" ry="120" stroke="#1c1917" stroke-width="1.5"/>
+    <line x1="60" y1="260" x2="460" y2="260" stroke="#1c1917" stroke-width="1"/>
+    <ellipse cx="260" cy="260" rx="200" ry="120" stroke="#1c1917" stroke-width="1.5" transform="rotate(40 260 260)"/>
+    <ellipse cx="260" cy="260" rx="200" ry="120" stroke="#1c1917" stroke-width="1.5" transform="rotate(80 260 260)"/>
+    <ellipse cx="260" cy="260" rx="200" ry="120" stroke="#1c1917" stroke-width="1.5" transform="rotate(120 260 260)"/>
+    <circle cx="260" cy="260" r="10" fill="#1c1917"/>
+  </svg>
+
+  <div class="hero-content max-w-7xl mx-auto px-6 md:px-10 w-full">
+    <p class="section-label mb-6">Est. Rosario, Santa Fe</p>
+
+    <h1 class="hero-h1">
+      Café de origen.<br>
+      <em>Brunch consciente</em><br>
+      y nutritivo.
+    </h1>
+
+    <p class="mt-8 max-w-xl text-stone-700 font-light leading-relaxed" style="font-size:1.02rem;">
+      Un espacio vibrante diseñado para tu bienestar. Disfrutá de nuestros granos seleccionados y un menú equilibrado con ingredientes frescos para acompañar tu ritmo.
+    </p>
+
+    <div class="mt-12 flex flex-wrap gap-4 items-center">
+      <a href="#menu" class="cta-btn">Conocé nuestro Menú</a>
+      <a href="#nosotros" class="nav-link" style="color:#57534e; font-size:0.7rem;">→ Nuestra historia</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     NOSOTROS
+════════════════════════════════════════════════ -->
+<section id="nosotros" class="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+  <p class="section-label mb-10">Nosotros</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-0 shadow-xl">
+
+    <!-- Col Izq: Bloque sólido Rosa Mexicano -->
+    <div class="nosotros-quote-block">
+      <!-- SVG decorativo: grano de café esquemático -->
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-8 opacity-60" aria-hidden="true">
+        <ellipse cx="24" cy="24" rx="16" ry="10" stroke="#fce7f3" stroke-width="1.5"/>
+        <line x1="8" y1="24" x2="40" y2="24" stroke="#fce7f3" stroke-width="1" stroke-dasharray="2 2"/>
+        <ellipse cx="24" cy="24" rx="16" ry="10" stroke="#fce7f3" stroke-width="1.5" transform="rotate(60 24 24)"/>
+      </svg>
+
+      <blockquote class="nosotros-quote">
+        "Cada taza es un gesto de cuidado. Cada plato, una conversación con la tierra."
+      </blockquote>
+
+      <p class="mt-8 text-pink-200 font-light text-sm tracking-widest uppercase" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.2em;">
+        — El equipo Grano & Raíz
+      </p>
+    </div>
+
+    <!-- Col Der: Texto -->
+    <div class="bg-stone-200 p-14 flex flex-col justify-center">
+      <h2 class="text-2xl font-light leading-snug mb-6" style="letter-spacing:-0.015em;">
+        Calidad que se siente<br>desde el primer sorbo.
+      </h2>
+      <p class="text-stone-600 font-light leading-relaxed text-sm mb-5">
+        Trabajamos con pequeños productores de Colombia, Etiopía y Perú que comparten nuestra obsesión por el detalle. Cada lote se selecciona por sus notas únicas y su impacto positivo en las comunidades de origen.
+      </p>
+      <p class="text-stone-600 font-light leading-relaxed text-sm mb-8">
+        Nuestro espacio en Pichincha fue pensado como un paréntesis dentro del día: luz natural, materiales auténticos y un menú que equilibra sabor, nutrición y temporada.
+      </p>
+
+      <!-- SVG: línea decorativa horizontal -->
+      <svg width="60" height="4" viewBox="0 0 60 4" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="60" height="4" fill="#be185d"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     MENÚ
+════════════════════════════════════════════════ -->
+<section id="menu" style="background-color:#e0d8cd;">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+
+    <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-16">
+      <p class="section-label mb-3 md:mb-0">Menú</p>
+      <h2 class="text-3xl md:text-4xl font-light" style="letter-spacing:-0.02em;">Lo que preparamos hoy.</h2>
+    </div>
+
+    <!-- ─ CATEGORÍA 1: CAFÉ DE ESPECIALIDAD ─ -->
+    <div class="mb-20">
+      <p class="menu-category mb-8">Café de Especialidad</p>
+
+      <div class="space-y-0">
+
+        <div class="py-8 border-t menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Espresso de Origen</span>
+          <span class="menu-item-desc md:col-span-2">Blend de Etiopía Yirgacheffe y Colombia Huila. Notas a bergamota, durazno y caramelo oscuro. Extraído a 9 bar, 27 segundos.</span>
+        </div>
+
+        <div class="py-8 border-t menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Cortado Rosado</span>
+          <span class="menu-item-desc md:col-span-2">Espresso con leche de avena texturizada y un toque de agua de rosas artesanal. Para los que buscan algo diferente sin perder el ritual.</span>
+        </div>
+
+        <div class="py-8 border-t border-b menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Pour-Over Lento</span>
+          <span class="menu-item-desc md:col-span-2">Preparación manual V60 con granos de temporada. El barista te cuenta el origen mientras infusionamos. Experiencia de 8 minutos.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─ CATEGORÍA 2: BRUNCH & LONCHERÍA ─ -->
+    <div class="mb-20">
+      <p class="menu-category mb-8">Brunch &amp; Lonchería</p>
+
+      <div class="space-y-0">
+
+        <div class="py-8 border-t menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Tostadas de Masa Madre</span>
+          <span class="menu-item-desc md:col-span-2">Pan artesanal de fermentación larga con palta, semillas de sésamo, limón encurtido y aceite de oliva virgen extra del NOA.</span>
+        </div>
+
+        <div class="py-8 border-t menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Bowl de Granos</span>
+          <span class="menu-item-desc md:col-span-2">Quínoa y mijo con verduras asadas de temporada, huevo poché, salsa de tahini y hierbas frescas del huerto. Energía limpia para toda la mañana.</span>
+        </div>
+
+        <div class="py-8 border-t border-b menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Sandwich de Raíces</span>
+          <span class="menu-item-desc md:col-span-2">Pan de centeno con hummus de zanahoria asada, remolacha encurtida, rúcula y queso de cabra curado de productores locales de Santa Fe.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─ CATEGORÍA 3: PASTELERÍA ─ -->
+    <div>
+      <p class="menu-category mb-8">Pastelería</p>
+
+      <div class="space-y-0">
+
+        <div class="py-8 border-t menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Kouign-Amann de Naranja</span>
+          <span class="menu-item-desc md:col-span-2">Masa laminada caramelizada con ralladura de naranja de Entre Ríos y cardamomo. Horneada cada mañana, disponible hasta agotar stock.</span>
+        </div>
+
+        <div class="py-8 border-t menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Barra de Cacao Crudo</span>
+          <span class="menu-item-desc md:col-span-2">Sin gluten ni refinados. Con cacao 70% de Misiones, dátiles medjool, almendras activadas y sal marina. Placer sin culpa.</span>
+        </div>
+
+        <div class="py-8 border-t border-b menu-divider grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+          <span class="menu-item-name">Tarteleta de Limón Amarillo</span>
+          <span class="menu-item-desc md:col-span-2">Masa de almendras sin gluten, crema de limón siciliano y merengue tostado. Cítrica, ligera, con ese equilibrio entre lo dulce y lo cortante.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA menú -->
+    <div class="mt-16">
+      <p class="text-stone-500 font-light text-sm mb-6" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.1em; text-transform:uppercase;">
+        Menú de temporada · Actualizado quincenalmente
+      </p>
+      <a href="#contacto" class="cta-btn">Hacé tu reserva</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     TESTIMONIOS
+════════════════════════════════════════════════ -->
+<section id="testimonios">
+
+  <div class="max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-0">
+    <p class="section-label mb-10">Lo que dicen</p>
+  </div>
+
+  <!-- 3 bloques contiguos, sin gap, sin rounded -->
+  <div class="grid grid-cols-1 md:grid-cols-3">
+
+    <!-- Bloque 1: Rosa Mexicano -->
+    <div class="p-12 md:p-14" style="background-color:#be185d;">
+      <!-- Comillas SVG -->
+      <svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-6 opacity-50" aria-hidden="true">
+        <path d="M0 24V14.4C0 6.4 4.26667 1.86667 12.8 0L14.4 2.93333C10.4 3.73333 7.73333 5.06667 6.4 6.93333C5.06667 8.8 4.53333 11.2 4.8 14.1333H9.6V24H0ZM17.6 24V14.4C17.6 6.4 21.8667 1.86667 30.4 0L32 2.93333C28 3.73333 25.3333 5.06667 24 6.93333C22.6667 8.8 22.1333 11.2 22.4 14.1333H27.2V24H17.6Z" fill="#fce7f3"/>
+      </svg>
+      <p class="testimonial-text" style="color:#fce7f3;">
+        El pour-over que tomé esa mañana me recordó por qué amo el café de verdad. Se nota que hay un cuidado real detrás de cada taza. Vuelvo cada semana.
+      </p>
+      <p class="testimonial-name" style="color:#fbcfe8;">— Valentina M.</p>
+    </div>
+
+    <!-- Bloque 2: Amarillo -->
+    <div class="p-12 md:p-14" style="background-color:#facc15;">
+      <svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-6 opacity-40" aria-hidden="true">
+        <path d="M0 24V14.4C0 6.4 4.26667 1.86667 12.8 0L14.4 2.93333C10.4 3.73333 7.73333 5.06667 6.4 6.93333C5.06667 8.8 4.53333 11.2 4.8 14.1333H9.6V24H0ZM17.6 24V14.4C17.6 6.4 21.8667 1.86667 30.4 0L32 2.93333C28 3.73333 25.3333 5.06667 24 6.93333C22.6667 8.8 22.1333 11.2 22.4 14.1333H27.2V24H17.6Z" fill="#1c1917"/>
+      </svg>
+      <p class="testimonial-text" style="color:#1c1917;">
+        El bowl de granos me cambió la forma de entender el brunch. Nutritivo, rico y hermoso visualmente. El espacio también es increíble: luminoso y sin apuro.
+      </p>
+      <p class="testimonial-name" style="color:#78350f;">— Matías G.</p>
+    </div>
+
+    <!-- Bloque 3: Terracota claro -->
+    <div class="p-12 md:p-14" style="background-color:#c2410c;">
+      <svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-6 opacity-40" aria-hidden="true">
+        <path d="M0 24V14.4C0 6.4 4.26667 1.86667 12.8 0L14.4 2.93333C10.4 3.73333 7.73333 5.06667 6.4 6.93333C5.06667 8.8 4.53333 11.2 4.8 14.1333H9.6V24H0ZM17.6 24V14.4C17.6 6.4 21.8667 1.86667 30.4 0L32 2.93333C28 3.73333 25.3333 5.06667 24 6.93333C22.6667 8.8 22.1333 11.2 22.4 14.1333H27.2V24H17.6Z" fill="#fed7aa"/>
+      </svg>
+      <p class="testimonial-text" style="color:#fde8d0;">
+        Vine desde Buenos Aires y fue lo primero que visité. Café, croissant y esa luz de la tarde entrando por las ventanas. Rosario me sorprende, Grano & Raíz también.
+      </p>
+      <p class="testimonial-name" style="color:#fed7aa;">— Luciana P.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     CONTACTO
+════════════════════════════════════════════════ -->
+<section id="contacto" class="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+  <p class="section-label mb-10">Contacto &amp; Reservas</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+
+    <!-- Col Izq: Horarios + datos -->
+    <div>
+      <h2 class="text-3xl font-light mb-12" style="letter-spacing:-0.02em;">
+        Venite cuando<br>más lo necesites.
+      </h2>
+
+      <!-- Horario principal -->
+      <div class="mb-8 border-l-4 pl-6" style="border-color:#be185d;">
+        <p class="schedule-day">Mar a Dom</p>
+        <p class="schedule-time">9:00 – 20:00 hs</p>
+      </div>
+
+      <div class="mb-12">
+        <p class="schedule-day mb-1">Lunes</p>
+        <p class="text-stone-500 font-light text-sm">Cerrado · Nos tomamos el lunes para pensar el menú de la semana.</p>
+      </div>
+
+      <!-- Línea divisoria -->
+      <div class="w-12 h-1 mb-8" style="background-color:#facc15;"></div>
+
+      <!-- Dirección -->
+      <div class="mb-6">
+        <p class="form-label mb-1">Dónde estamos</p>
+        <p class="text-stone-700 font-light">Pasaje Pichincha 820<br>Barrio Pichincha, Rosario<br>Santa Fe, Argentina</p>
+      </div>
+
+      <!-- Teléfono / IG -->
+      <div>
+        <p class="form-label mb-1">Encontranos</p>
+        <p class="text-stone-700 font-light">@granoyraiz.rosario<br>+54 341 555 0172</p>
+      </div>
+    </div>
+
+    <!-- Col Der: Formulario -->
+    <div>
+      <div class="mb-8">
+        <label class="form-label" for="nombre">Tu nombre</label>
+        <input class="form-input" id="nombre" type="text" placeholder="María, Facundo, …" />
+      </div>
+
+      <div class="mb-8">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-input form-input-amarillo" id="email" type="email" placeholder="hola@correo.com" />
+      </div>
+
+      <div class="mb-8">
+        <label class="form-label" for="fecha">Fecha de visita</label>
+        <input class="form-input form-input-terracota" id="fecha" type="date" />
+      </div>
+
+      <div class="mb-10">
+        <label class="form-label" for="mensaje">Mensaje o consulta</label>
+        <textarea class="form-input" id="mensaje" rows="5" placeholder="¿Reserva para cuántas personas? ¿Alguna restricción alimentaria?"></textarea>
+      </div>
+
+      <button type="button" class="cta-btn cta-btn-terracota w-full md:w-auto" style="display:block; text-align:center;">
+        Enviar consulta
+      </button>
+
+      <p class="text-stone-400 text-xs mt-4 font-light">Respondemos en menos de 24 horas · Sin spam</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer id="site-footer">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-16">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+
+      <!-- Col 1: Logo + tagline -->
+      <div>
+        <p class="logo-eyebrow mb-2" style="color:#a8a29e;">Café de Especialidad · Rosario</p>
+        <p class="footer-logo mb-4">GRANO & RAÍZ</p>
+        <p class="text-stone-400 font-light text-sm leading-relaxed max-w-xs">
+          Un espacio pensado para que el tiempo valga. Café, brunch y comunidad en el corazón de Pichincha.
+        </p>
+      </div>
+
+      <!-- Col 2: Dirección + horarios -->
+      <div>
+        <p class="form-label mb-4" style="color:#a8a29e;">Visitanos</p>
+        <p class="text-stone-300 font-light text-sm leading-loose">
+          Pasaje Pichincha 820<br>
+          Barrio Pichincha, Rosario<br>
+          Santa Fe, Argentina<br><br>
+          Mar a Dom · 9:00 – 20:00 hs
+        </p>
+      </div>
+
+      <!-- Col 3: Redes sociales con SVG inline -->
+      <div>
+        <p class="form-label mb-6" style="color:#a8a29e;">Seguinos</p>
+
+        <div class="flex flex-col gap-4">
+
+          <!-- Instagram SVG inline -->
+          <a href="#" class="flex items-center gap-3 group" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="#a8a29e" stroke-width="1.5" class="group-hover:stroke-pink-400" style="transition:stroke 0.15s"/>
+              <circle cx="12" cy="12" r="4" stroke="#a8a29e" stroke-width="1.5" class="group-hover:stroke-pink-400" style="transition:stroke 0.15s"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#a8a29e" class="group-hover:fill-pink-400" style="transition:fill 0.15s"/>
+            </svg>
+            <span class="text-stone-400 text-sm font-light group-hover:text-stone-200" style="transition:color 0.15s;">@granoyraiz.rosario</span>
+          </a>
+
+          <!-- Facebook SVG inline -->
+          <a href="#" class="flex items-center gap-3 group" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="3" stroke="#a8a29e" stroke-width="1.5" class="group-hover:stroke-blue-400" style="transition:stroke 0.15s"/>
+              <path d="M13 21v-7h2.5l.5-3H13V9c0-.83.42-1.5 1.5-1.5H16V5s-1.12-.17-2.25-.17C11.5 4.83 10 6.5 10 9v2H8v3h2v7" stroke="#a8a29e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-blue-400" style="transition:stroke 0.15s"/>
+            </svg>
+            <span class="text-stone-400 text-sm font-light group-hover:text-stone-200" style="transition:color 0.15s;">Grano &amp; Raíz Rosario</span>
+          </a>
+
+          <!-- WhatsApp SVG inline -->
+          <a href="#" class="flex items-center gap-3 group" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="#a8a29e" stroke-width="1.5" class="group-hover:stroke-green-400" style="transition:stroke 0.15s"/>
+              <path d="M8 10c.5-2 2-3 4-3s3.5 1 4 3c.5 2-.5 4-2 5l-.5 2-2-.5c-1.5-.5-4-3-3.5-6.5z" stroke="#a8a29e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-green-400" style="transition:stroke 0.15s"/>
+            </svg>
+            <span class="text-stone-400 text-sm font-light group-hover:text-stone-200" style="transition:color 0.15s;">+54 341 555 0172</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer bottom: línea + copyright -->
+    <div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+      <p class="text-stone-600 text-xs font-light" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.1em; text-transform:uppercase;">
+        © 2025 Grano &amp; Raíz · Rosario, Santa Fe
+      </p>
+      <div class="flex gap-1 items-center">
+        <!-- Tres cuadrados de color como firma visual -->
+        <span class="inline-block w-2.5 h-2.5" style="background:#be185d;"></span>
+        <span class="inline-block w-2.5 h-2.5" style="background:#facc15;"></span>
+        <span class="inline-block w-2.5 h-2.5" style="background:#c2410c;"></span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  // Mobile nav toggle
+  document.getElementById('menu-btn').addEventListener('click', function () {
+    const nav = document.getElementById('mobile-nav');
+    nav.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>
